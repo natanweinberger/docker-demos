@@ -1,0 +1,13 @@
+version: '3'
+services:
+  mysql:
+    image: 2-mysql
+  app:
+    build: .
+    environment:
+      HOST: mysql
+      USER: root
+      PASSWORD: password
+      PORT: 3306
+      DATABASE: demo
+    command: ["/home/wait-for-mysql.sh", "python", "/home/src/db.py"]
